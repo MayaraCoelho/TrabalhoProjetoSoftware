@@ -5,12 +5,13 @@
  */
 package trabalhops;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 /**
  *
@@ -33,10 +34,10 @@ public class Arquivo {
     public void writeArquivo() throws IOException {
 
         try {
-            FileOutputStream writeArquivo = new FileOutputStream(nomeArquivo);
-            ObjectOutputStream os = new ObjectOutputStream(writeArquivo);
-            os.write(buffer);
-            os.close();
+            FileOutputStream writeArquivo = new FileOutputStream(new File(nomeArquivo));
+            DataOutputStream dataOs = new DataOutputStream(writeArquivo);
+            dataOs.writeUTF(bytes);
+            dataOs.close();
             System.out.println("Wrote " + buffer.length
                     + " bytes");
 
@@ -45,15 +46,14 @@ public class Arquivo {
         }
     }
 
-    public void readArquivo()throws IOException {
+    public void readArquivo() throws IOException {
         try {
-            FileInputStream readArquivo = new FileInputStream(nomeArquivo);
-            ObjectInputStream is = new ObjectInputStream(readArquivo);
-            is.read();
-//            is.readByte();
-            is.close();
-            System.out.println("teste "+ is.read());
-        
+            FileInputStream readArquivo = new FileInputStream(new File(nomeArquivo));
+            DataInputStream dataIs = new DataInputStream(readArquivo);
+            String teste = dataIs.readUTF();
+            System.out.println("teste "+ teste);
+            dataIs.close();           
+
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
