@@ -5,17 +5,28 @@
  */
 package trabalhops;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 /**
  *
  * @author mayaracoelho
  */
 public class TrabalhoPS {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    // The name of the file to create.
+    private static final String nomeArquivo = "Arquivo.bin";
+
+    public static void main(String[] args) throws IOException {
+
+        Arquivo arq = new Arquivo();
+
+        arq.writeArquivo();
+        System.out.println("========");
+        arq.readArquivo();
+        
+
     }
-    
+
 }
