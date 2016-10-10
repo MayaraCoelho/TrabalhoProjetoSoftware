@@ -29,7 +29,6 @@ public class Arquivo {
     // image data or something. Or it might
     // be unicode text.
     String bytes = "Hello theren";
-    byte[] buffer = bytes.getBytes();
 
     public void writeArquivo() throws IOException {
 
@@ -38,8 +37,6 @@ public class Arquivo {
             DataOutputStream dataOs = new DataOutputStream(writeArquivo);
             dataOs.writeUTF(bytes);
             dataOs.close();
-            System.out.println("Wrote " + buffer.length
-                    + " bytes");
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();

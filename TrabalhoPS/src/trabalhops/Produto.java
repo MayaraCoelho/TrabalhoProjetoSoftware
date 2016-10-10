@@ -5,6 +5,7 @@
  */
 package trabalhops;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -15,13 +16,13 @@ public class Produto {
     private int codigo;
     private String nome;
     private String descricao;
-    private Date dataInicial;
-    private Date dataFinal;
+    private LocalDate dataInicial;
+    private LocalDate dataFinal;
     
     public Produto() {
     }
 
-    public Produto(int codigo, String nome, String descricao, Date dataInicial, Date dataFinal) {
+    public Produto(int codigo, String nome, String descricao, LocalDate dataInicial, LocalDate dataFinal) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
