@@ -6,6 +6,8 @@
 package trabalhops;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Month;
 
 /**
  *
@@ -15,7 +17,6 @@ public class TrabalhoPS {
 
     // The name of the file to create.
 //    private static final String nomeArquivo = "Arquivo.bin";
-    
     public static Catalogo cat = new Catalogo();
     public static Arquivo arq = new Arquivo();
     public static Arquivo arq2 = new Arquivo();
@@ -23,11 +24,12 @@ public class TrabalhoPS {
 
     public static void main(String[] args) throws IOException {
 
-        Produto produto = cat.incluirProduto(11, "testeC ", "tested");
-        arq.writeArquivo(produto.getCodigo(), produto.getNome(), produto.getDescricao());
-        Produto produto2 = cat.incluirProduto(12, "testec2 ", "tested2");
-        arq2.writeArquivo(produto2.getCodigo(), produto2.getNome(), produto2.getDescricao());
-        
+        Produto produto = cat.incluirProduto(11, "testeC ", "tested ", LocalDate.of(2016, Month.MARCH, 10), LocalDate.now());
+        arq.writeArquivo(produto.getCodigo(), produto.getNome(),
+                produto.getDescricao(), produto.getDataInicial(), produto.getDataFinal());
+//        Produto produto2 = cat.incluirProduto(12, "testec2 ", "tested2");
+//        arq2.writeArquivo(produto2.getCodigo(), produto2.getNome(), produto2.getDescricao());
+
     }
 
 }

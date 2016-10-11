@@ -17,13 +17,13 @@ public class Catalogo {
     private Produto[] produtos;
     private Arquivo arq;
     
-    public Produto incluirProduto(int codigo, String nome, String descricao) throws IOException{
+    public Produto incluirProduto(int codigo, String nome, String descricao, LocalDate dataInicial, LocalDate dataFinal) throws IOException{
         Produto produto = new Produto(); 
         produto.setCodigo(codigo);
         produto.setNome(nome);
         produto.setDescricao(descricao);
-//        produto.setDataInicial(dataInicial);
-//        produto.setDataFinal(dataFinal);
+        produto.setDataInicial(dataInicial);
+        produto.setDataFinal(dataFinal);
         return produto;
     }
     
