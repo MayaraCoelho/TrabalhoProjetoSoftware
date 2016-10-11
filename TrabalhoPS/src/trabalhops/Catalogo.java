@@ -5,6 +5,9 @@
  */
 package trabalhops;
 
+import java.io.IOException;
+import java.time.LocalDate;
+
 /**
  *
  * @author mayaracoelho
@@ -12,21 +15,23 @@ package trabalhops;
 public class Catalogo {
     
     private Produto[] produtos;
+    private Arquivo arq;
     
-    public void incluirProduto(){
-        
+    public Produto incluirProduto(int codigo, String nome, String descricao) throws IOException{
+        Produto produto = new Produto(); 
+        produto.setCodigo(codigo);
+        produto.setNome(nome);
+        produto.setDescricao(descricao);
+//        produto.setDataInicial(dataInicial);
+//        produto.setDataFinal(dataFinal);
+        return produto;
     }
     
-    public void apagarProduto(){
-        
+    public String toString(){
+      return null;  
     }
     
     public void buscarProduto(){
         
     }
-    
-    public void alterarProduto(){
-        
-    }
-    
 }
