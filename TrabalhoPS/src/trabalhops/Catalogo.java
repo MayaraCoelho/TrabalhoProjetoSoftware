@@ -27,11 +27,12 @@ public class Catalogo {
         return produto;
     }
     
+    @Override
     public String toString(){
       return null;  
     }
     
-    public void buscarProduto(){
+    public void buscarCodigoProduto(int codigo){
         
     }
 }

@@ -42,14 +42,21 @@ public class Arquivo {
         }
     }
 
-    public void readArquivo() throws IOException {
+    public void readArquivo(int codigo) throws IOException {
         try {
             FileInputStream readArquivo = new FileInputStream(new File(nomeArquivoTXT));
             DataInputStream dataIs = new DataInputStream(readArquivo);
             dataIs.readByte();
+//            while (dataIs != null) {
+//                if (dataIs.readByte() == codigo) {
+//                    System.out.println("IGUAL");
+//                } else {
+//                    dataIs.readByte();
+//                }
+//            }
+
             dataIs.readUTF();
             dataIs.close();
-
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
