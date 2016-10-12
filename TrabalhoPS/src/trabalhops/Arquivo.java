@@ -30,7 +30,7 @@ public class Arquivo {
         try {
             FileOutputStream writeArquivo = new FileOutputStream(new File(nomeArquivoTXT), true);
             DataOutputStream dataOs = new DataOutputStream(writeArquivo);
-            dataOs.writeBytes(codigo + "");
+            dataOs.writeBytes(codigo + " ");
             dataOs.writeUTF(nome + " ");
             dataOs.writeUTF(descricao + " ");
             dataOs.writeBytes(dataInicial + " ");
@@ -42,21 +42,39 @@ public class Arquivo {
         }
     }
 
-    public void readArquivo(int codigo) throws IOException {
+    public void readArquivo() throws IOException {
         try {
             FileInputStream readArquivo = new FileInputStream(new File(nomeArquivoTXT));
             DataInputStream dataIs = new DataInputStream(readArquivo);
-            dataIs.readByte();
-//            while (dataIs != null) {
-//                if (dataIs.readByte() == codigo) {
-//                    System.out.println("IGUAL");
-//                } else {
-//                    dataIs.readByte();
-//                }
-//            }
+            byte[] fileData = new byte[(int) (nomeArquivoTXT.length())];
 
-            dataIs.readUTF();
-            dataIs.close();
+            byte cod = dataIs.readByte();
+//            System.out.println("condigo: " + cod);
+//            String nom = dataIs.readUTF();
+//            System.out.println("nome: " + nom);
+//            String des = dataIs.readUTF();
+//            System.out.println("descrição: " + des);
+//            byte dai = dataIs.readByte();
+//            System.out.println("data inicial: " + dai);
+//            byte daf = dataIs.readByte();
+//            System.out.println("data final: " + daf);
+//            dataIs.readByte();
+//            String token[] = str.split(" ");
+//            dataIs.readUTF();
+//            dataIs.readUTF();
+//            dataIs.readByte();
+//            dataIs.readByte();
+            System.out.println("cod do arquivo " + cod);
+            //            while (dataIs != null) {
+            //                if (dataIs.readByte() == codigo) {
+            //                    System.out.println("IGUAL");
+            //                } else {
+            //                    dataIs.readByte();
+            //                }
+            //            }
+            //            dataIs.readUTF();
+            dataIs
+                    .close();
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }

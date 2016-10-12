@@ -33,7 +33,8 @@ public class TrabalhoPS {
         arq2.writeArquivo(produto2.getCodigo(), produto2.getNome(), produto2.getDescricao(),
                 produto.getDataInicial(), produto.getDataFinal());
         
-//        arq2.readArquivo(produto2.getCodigo());
+            arq2.readArquivo();
+        System.out.println(" READ ARQUIVO ");
 
     }
 
