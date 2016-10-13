@@ -18,8 +18,6 @@ public class Produto {
     private LocalDate dataInicial;
     private LocalDate dataFinal;
     
-    public Produto() {
-    }
 
     public Produto(int codigo, String nome, String descricao, LocalDate dataInicial, LocalDate dataFinal) {
         this.codigo = codigo;
