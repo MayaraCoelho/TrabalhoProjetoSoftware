@@ -8,8 +8,11 @@ package trabalhops.view;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import trabalhops.controller.Loja;
+import trabalhops.model.Produto;
 
 /**
  *
@@ -20,6 +23,7 @@ public class TrabalhoPS {
     
 
     public static void main(String[] args) throws IOException {
+        Loja loja = null;
         Integer option = 0;
         while(option!=5){
             printMenu();
@@ -45,9 +49,12 @@ public class TrabalhoPS {
                                                 System.out.print("Descrição: \n");
                                                 String descr = scanner.next();
                                                 System.out.print("Data de inicio (yyyy-MM-dd: \n");
-                                                //LocalDate dtIn = new LocalDate(scanner.next()); 
-                                                System.out.print("Descrição: \n");
-                                                //Produto produto = new Produto(cod, nome, descr, )
+                                                final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+                                                final LocalDate dtIn = LocalDate.parse(scanner.next());
+                                                System.out.print("Data Final (yyyy-MM-dd: \n");
+                                                final LocalDate dtFin = LocalDate.parse(scanner.next());
+                                                Produto produto = new Produto(cod, nome, descr, dtIn, dtFin);
+                                                loja.add(codigo, produto);
 						break;
 					case 2:
 						
