@@ -22,12 +22,7 @@ public class Catalogo {
     
     
     public Produto incluirProduto(int codigo, String nome, String descricao, LocalDate dataInicial, LocalDate dataFinal) throws IOException{
-        Produto produto = new Produto(); 
-        produto.setCodigo(codigo);
-        produto.setNome(nome);
-        produto.setDescricao(descricao);
-        produto.setDataInicial(dataInicial);
-        produto.setDataFinal(dataFinal);
+        Produto produto = new Produto(codigo, nome, descricao, dataInicial, dataFinal); 
         return produto;
     }
     
