@@ -14,16 +14,14 @@ import trabalhops.model.Produto;
  * @author mayaracoelho
  */
 public class Loja {
-    
-    
+
     public void add(String key, Produto produto) throws IOException {
         if (key != null && !key.isEmpty()) {
             Catalogo cat = new Catalogo();
-                cat.incluirProduto(produto.getCodigo(), produto.getNome(),
-                       produto.getDescricao(), produto.getDataInicial(), 
-                       produto.getDataFinal());
+            cat.incluirProduto(produto.getCodigo(), produto.getNome(),
+                    produto.getDescricao(), produto.getDataInicial(),
+                    produto.getDataFinal());
         }
-        
 
     }
 
