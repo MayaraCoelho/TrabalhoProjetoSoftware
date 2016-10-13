@@ -12,6 +12,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.time.LocalDate;
 
 /**
@@ -20,64 +23,45 @@ import java.time.LocalDate;
  */
 public class Arquivo {
 
+    private static final String nomeArquivo = "Arquivo.bin";
+
     public Arquivo() {
     }
 
-    private static final String nomeArquivoTXT = "test.txt";
+    public static void write(Catalogo cat, String filePath) throws IOException {
+        Files.write(FileSystems.getDefault().getPath("", filePath), cat.toString().getBytes());
+    }
 
-    public void writeArquivo(int codigo, String nome, String descricao, LocalDate dataInicial, LocalDate dataFinal) throws IOException {
-
+    public static String read(String filePath) throws IOException {
         try {
-            FileOutputStream writeArquivo = new FileOutputStream(new File(nomeArquivoTXT), true);
-            DataOutputStream dataOs = new DataOutputStream(writeArquivo);
-            dataOs.writeBytes(codigo + " ");
-            dataOs.writeUTF(nome + " ");
-            dataOs.writeUTF(descricao + " ");
-            dataOs.writeBytes(dataInicial + " ");
-            dataOs.writeBytes(dataFinal + " ");
-            dataOs.close();
-
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
+            byte[] fileData = Files.readAllBytes(FileSystems.getDefault().getPath("", filePath));
+            return new String(fileData);
+        } catch (NoSuchFileException e) {
+            return "";
         }
     }
 
-    public void readArquivo() throws IOException {
+    public void criaFile() throws IOException {
+
+        String filename = "Arquivo.bin";
+        String workingDirectory = System.getProperty("user.dir");
+        String absoluteFilePath = "";
+
+        absoluteFilePath = workingDirectory + File.separator + filename;
+        System.out.println("Final filepath : " + absoluteFilePath);
+
+        File file = new File(absoluteFilePath);
+
         try {
-            FileInputStream readArquivo = new FileInputStream(new File(nomeArquivoTXT));
-            DataInputStream dataIs = new DataInputStream(readArquivo);
-            byte[] fileData = new byte[(int) (nomeArquivoTXT.length())];
+            if (file.createNewFile()) {
+                System.out.println("File is created!");
+            } else {
+                System.out.println("File is already existed!");
+            }
 
-            byte cod = dataIs.readByte();
-//            System.out.println("condigo: " + cod);
-//            String nom = dataIs.readUTF();
-//            System.out.println("nome: " + nom);
-//            String des = dataIs.readUTF();
-//            System.out.println("descrição: " + des);
-//            byte dai = dataIs.readByte();
-//            System.out.println("data inicial: " + dai);
-//            byte daf = dataIs.readByte();
-//            System.out.println("data final: " + daf);
-//            dataIs.readByte();
-//            String token[] = str.split(" ");
-//            dataIs.readUTF();
-//            dataIs.readUTF();
-//            dataIs.readByte();
-//            dataIs.readByte();
-            System.out.println("cod do arquivo " + cod);
-            //            while (dataIs != null) {
-            //                if (dataIs.readByte() == codigo) {
-            //                    System.out.println("IGUAL");
-            //                } else {
-            //                    dataIs.readByte();
-            //                }
-            //            }
-            //            dataIs.readUTF();
-            dataIs
-                    .close();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }
 
+    }
 }
