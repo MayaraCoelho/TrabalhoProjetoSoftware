@@ -70,7 +70,12 @@ public class Produto {
     }
     
     
-    
+    @Override
+    public String toString(){
+        String string;
+        string = (codigo + " " + nome + " " + descricao + " " + dataInicial + " " + dataFinal);
+      return string;  
+    }
     
     
 }
