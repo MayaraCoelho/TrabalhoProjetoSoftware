@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalhops;
+package trabalhops.controller;
 
+import trabalhops.model.Catalogo;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
