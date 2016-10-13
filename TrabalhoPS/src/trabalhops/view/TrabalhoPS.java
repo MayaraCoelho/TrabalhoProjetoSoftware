@@ -58,12 +58,16 @@ public class TrabalhoPS {
 						break;
 					case 2:
 						System.out.print("Insira o código do produto que deseja visualizar: \n");
+                                                codigo = scanner.next();
+                                                loja.buscaProduto(codigo);
                                                 //imprimir produto X
 						break;
                                         case 3:
+                                                loja.pegaCatalogo();
                                                 //basta usar toString do catalogo
 						break;
 					case 4:
+                                                loja.pegaNomes();
 						//listar nomes dos produtos, basta criar um metodo com um loop no catálogo
 						break;
 					case 5:

@@ -43,15 +43,21 @@ public class Catalogo {
              
         }
     
-    public void checkkey(String key){
-        catalogo.containsKey(key);
+    public boolean checkkey(String key){
         
+        if(catalogo.containsKey(key)){
+            return true;
+        }
+        return false;
     }
     
     
-    public void return_produto(String key){
-        catalogo.containsKey(key); //Aqui talvez um toString
+    public String return_produto(String key){
+        Produto produto;
         
+        produto = catalogo.get(key); //Aqui talvez um toString
+        
+        return produto.toString();
     }
 
     
@@ -66,6 +72,14 @@ public class Catalogo {
             string += produto.getValue().toString() + "/n";
         }
       return string;  
+    }
+    
+    public String listaNomes(){
+        String string = "";
+        for(Map.Entry<String, Produto> produto : catalogo.entrySet()){
+            string += produto.getValue().getNome() + "/n";
+        }
+        return string;
     }
     
 }

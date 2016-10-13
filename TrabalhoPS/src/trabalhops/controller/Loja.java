@@ -14,6 +14,7 @@ import trabalhops.model.Produto;
  * @author mayaracoelho
  */
 public class Loja {
+    Catalogo catalogo;
 
     public void add(String key, Produto produto) throws IOException {
         if (key != null && !key.isEmpty()) {
@@ -24,5 +25,19 @@ public class Loja {
         }
 
     }
-
+    
+    public void buscaProduto(String codigo){
+        if(!catalogo.checkkey(codigo)){
+            System.out.println("Produto não encontrado.");
+        }
+        System.out.println(catalogo.return_produto(codigo));
+    }
+    
+    public void pegaCatalogo(){
+        System.out.println(catalogo.toString());
+    }
+    
+    public void pegaNomes(){
+        System.out.println(catalogo.listaNomes());
+    }
 }
