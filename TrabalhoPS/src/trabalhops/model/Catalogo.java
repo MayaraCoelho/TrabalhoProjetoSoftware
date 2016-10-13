@@ -18,8 +18,20 @@ public class Catalogo {
     
     //private Produto[] produtos;
     //private Arquivo arq;
-    Map<String, Produto> catalogo = new Hashtable();
+    Map<String, Produto> catalogo = new Hashtable<String, Produto>();
     
+      public Catalogo(String catalogo) {
+        String[] result = catalogo.split("[\n]");
+        for (String r : result) {
+            String[] res = r.split(" ");
+            int cod = Integer.parseInt(res[0]);
+            final LocalDate dtIn = LocalDate.parse(res[3]);
+            final LocalDate dtFin = LocalDate.parse(res[4]); 
+                Produto produto = new Produto(cod, res[1], res[2],dtIn, dtFin);
+               this.catalogo.put(res[0], produto);
+ 
+            }  
+        }
     
     public Produto incluirProduto(int codigo, String nome, String descricao, LocalDate dataInicial, LocalDate dataFinal) throws IOException{
         Produto produto = new Produto(codigo, nome, descricao, dataInicial, dataFinal); 
