@@ -6,6 +6,7 @@
 package trabalhops.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import trabalhops.model.Catalogo;
 import trabalhops.model.Produto;
 
@@ -16,10 +17,10 @@ import trabalhops.model.Produto;
 public class Loja {
     Catalogo catalogo;
 
-    public void add(String key, Produto produto) throws IOException {
+    public void add(String key, int cod, String nome, String descr, LocalDate dtIn, LocalDate dtFin) throws IOException {
         if (key != null && !key.isEmpty()) {
-            Catalogo cat = new Catalogo();
-            cat.incluirProduto(produto.getCodigo(), produto.getNome(),
+            Produto produto = new Produto(cod, nome, descr, dtIn, dtFin);
+            catalogo.incluirProduto(produto.getCodigo(), produto.getNome(),
                     produto.getDescricao(), produto.getDataInicial(),
                     produto.getDataFinal());
         }

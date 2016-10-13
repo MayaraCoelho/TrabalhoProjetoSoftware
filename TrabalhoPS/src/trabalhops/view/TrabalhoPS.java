@@ -52,9 +52,8 @@ public class TrabalhoPS {
                                                 final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
                                                 final LocalDate dtIn = LocalDate.parse(scanner.next());
                                                 System.out.print("Data Final (yyyy-MM-dd: \n");
-                                                final LocalDate dtFin = LocalDate.parse(scanner.next());
-                                                Produto produto = new Produto(cod, nome, descr, dtIn, dtFin);
-                                                loja.add(codigo, produto);
+                                                final LocalDate dtFin = LocalDate.parse(scanner.next());                                                
+                                                loja.add(codigo, cod, nome, descr, dtIn, dtFin);
 						break;
 					case 2:
 						System.out.print("Insira o código do produto que deseja visualizar: \n");
