@@ -38,8 +38,16 @@ public class TrabalhoPS {
 					case 1:
 						System.out.print("Favor digitar dados do produto. \n");
                                                 System.out.print("Código: \n");
+                                                String codigo = scanner.next();
+                                                Integer cod = Integer.parseInt(codigo);
                                                 System.out.print("Nome: \n");
+                                                String nome = scanner.next();
                                                 System.out.print("Descrição: \n");
+                                                String descr = scanner.next();
+                                                System.out.print("Data de inicio (yyyy-MM-dd: \n");
+                                                //LocalDate dtIn = new LocalDate(scanner.next()); 
+                                                System.out.print("Descrição: \n");
+                                                //Produto produto = new Produto(cod, nome, descr, )
 						break;
 					case 2:
 						
