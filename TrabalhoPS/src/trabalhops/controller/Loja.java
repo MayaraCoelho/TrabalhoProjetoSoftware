@@ -22,7 +22,7 @@ public class Loja {
             Produto produto = new Produto(cod, nome, descr, dtIn, dtFin);
             catalogo.incluirProduto(produto.getCodigo(), produto.getNome(),
                     produto.getDescricao(), produto.getDataInicial(),
-                    produto.getDataFinal());
+                    produto.getDataFinal()); 
         }
 
     }
