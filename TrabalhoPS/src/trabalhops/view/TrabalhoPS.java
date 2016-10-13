@@ -57,13 +57,14 @@ public class TrabalhoPS {
                                                 loja.add(codigo, produto);
 						break;
 					case 2:
-						
+						System.out.print("Insira o código do produto que deseja visualizar: \n");
+                                                //imprimir produto X
 						break;
                                         case 3:
-                                                
+                                                //basta usar toString do catalogo
 						break;
 					case 4:
-						
+						//listar nomes dos produtos, basta criar um metodo com um loop no catálogo
 						break;
 					case 5:
 						break;
@@ -79,7 +80,7 @@ public class TrabalhoPS {
         System.out.print("    1 - Adicionar Produto.\n");
         System.out.print("    2 - Ver um Produto.\n");
         System.out.print("    3 - Listar Produtos.\n");
-        System.out.print("    4 - Buscar produto por Codigo.\n");
+        System.out.print("    4 - Listar nomes dos produtos.\n");
         System.out.print("    5 - Sair.\n\n");
     }
 
