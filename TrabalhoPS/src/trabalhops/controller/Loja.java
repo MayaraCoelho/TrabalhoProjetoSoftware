@@ -7,6 +7,7 @@ package trabalhops.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import trabalhops.Util.Arquivo;
 import trabalhops.model.Catalogo;
 import trabalhops.model.Produto;
 
@@ -15,30 +16,39 @@ import trabalhops.model.Produto;
  * @author mayaracoelho
  */
 public class Loja {
-    Catalogo catalogo;
+
+    Catalogo catalogo = new Catalogo();
+    Arquivo arquivo = new Arquivo();
+
+    public Loja() {
+
+    }
 
     public void add(String key, int cod, String nome, String descr, LocalDate dtIn, LocalDate dtFin) throws IOException {
         if (key != null && !key.isEmpty()) {
             Produto produto = new Produto(cod, nome, descr, dtIn, dtFin);
-            catalogo.incluirProduto(produto.getCodigo(), produto.getNome(),
-                    produto.getDescricao(), produto.getDataInicial(),
-                    produto.getDataFinal()); 
+            catalogo.add(key, produto);
+
         }
 
     }
-    
-    public void buscaProduto(String codigo){
-        if(!catalogo.checkkey(codigo)){
+
+    public void buscaProduto(String codigo) {
+        if (!catalogo.checkkey(codigo)) {
             System.out.println("Produto não encontrado.");
         }
         System.out.println(catalogo.return_produto(codigo));
     }
-    
-    public void pegaCatalogo(){
+
+    public void pegaCatalogo() {
         System.out.println(catalogo.toString());
     }
-    
-    public void pegaNomes(){
+
+    public void pegaNomes() {
         System.out.println(catalogo.listaNomes());
+    }
+
+    public void atualizaCatalogo(Catalogo catalogo) throws IOException {
+        arquivo.atualizarArquivo(catalogo);
     }
 }

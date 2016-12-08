@@ -25,12 +25,40 @@ import java.time.LocalDate;
 public class Arquivo {
 
     private static final String nomeArquivo = "Arquivo.bin";
+    private static String filePath = "teste";
 
-    public Arquivo() {
+    public Arquivo(){
+        
+    }
+
+    public static void criaW() throws FileNotFoundException, IOException {
+        FileOutputStream writeArquivo = new FileOutputStream(new File(nomeArquivo), true);
+        DataOutputStream dataOs = new DataOutputStream(writeArquivo);
+        dataOs.close();
+    }
+
+    public static void criaR() throws FileNotFoundException, IOException {
+        FileInputStream readArquivo = new FileInputStream(new File(nomeArquivo));
+        DataInputStream dataIs = new DataInputStream(readArquivo);
+        dataIs.close();
+    }
+
+    public static String getFilePath() {
+        return filePath;
+    }
+
+    public static void setFilePath(String filePath) {
+        Arquivo.filePath = filePath;
     }
 
     public static void write(Catalogo cat, String filePath) throws IOException {
-        Files.write(FileSystems.getDefault().getPath("", filePath), cat.toString().getBytes());
+        try {
+            Files.write(FileSystems.getDefault().getPath("", filePath), cat.toString().getBytes());
+        } catch (NoSuchFileException e) {
+            String file = criaFile();
+            criaW();
+            Files.write(FileSystems.getDefault().getPath("", file), cat.toString().getBytes());
+        }
     }
 
     public static String read(String filePath) throws IOException {
@@ -38,31 +66,31 @@ public class Arquivo {
             byte[] fileData = Files.readAllBytes(FileSystems.getDefault().getPath("", filePath));
             return new String(fileData);
         } catch (NoSuchFileException e) {
-            return "";
+            String file = criaFile();
+            criaR();
+            byte[] fileData = Files.readAllBytes(FileSystems.getDefault().getPath("", filePath));
+            return new String(fileData);
         }
     }
 
-    public void criaFile() throws IOException {
+    public static String criaFile() throws IOException {
 
         String filename = "Arquivo.bin";
         String workingDirectory = System.getProperty("user.dir");
-        String absoluteFilePath = "";
+        String absoluteFilePath = "/Users/mayaracoelho";
 
         absoluteFilePath = workingDirectory + File.separator + filename;
         System.out.println("Final filepath : " + absoluteFilePath);
 
         File file = new File(absoluteFilePath);
+        Arquivo.setFilePath(absoluteFilePath);
 
-        try {
-            if (file.createNewFile()) {
-                System.out.println("File is created!");
-            } else {
-                System.out.println("File is already existed!");
-            }
+        return absoluteFilePath;
+    }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void atualizarArquivo(Catalogo catalogo) throws FileNotFoundException, IOException {
+
+        write(catalogo, Arquivo.getFilePath());
 
     }
 }

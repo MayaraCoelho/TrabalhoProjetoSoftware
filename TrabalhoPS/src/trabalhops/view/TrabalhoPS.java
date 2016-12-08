@@ -11,6 +11,7 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import trabalhops.Util.Arquivo;
 import trabalhops.controller.Loja;
 import trabalhops.model.Produto;
 
@@ -20,10 +21,10 @@ import trabalhops.model.Produto;
  */
 public class TrabalhoPS {
 
-    
 
     public static void main(String[] args) throws IOException {
-        Loja loja = null;
+        Loja loja = new Loja();
+        
         Integer option = 0;
         while(option!=5){
             printMenu();
