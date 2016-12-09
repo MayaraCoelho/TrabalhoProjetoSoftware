@@ -49,6 +49,6 @@ public class Loja {
     }
 
     public void atualizaCatalogo(Catalogo catalogo) throws IOException {
-        arquivo.atualizarArquivo(catalogo);
+//        arquivo.atualizarArquivo(catalogo);
     }
 }
