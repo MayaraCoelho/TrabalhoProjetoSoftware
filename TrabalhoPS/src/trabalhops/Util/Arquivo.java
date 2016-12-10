@@ -53,7 +53,6 @@ public class Arquivo implements Serializable {
         InputStream readArquivo = new FileInputStream(file);
         ObjectInputStream is = new ObjectInputStream(readArquivo);
         dados = (Map<String, Produto>) is.readObject();
-//             is.close();
         return dados;
 
     }

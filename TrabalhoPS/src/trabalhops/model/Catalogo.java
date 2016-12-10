@@ -7,7 +7,9 @@ package trabalhops.model;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 import trabalhops.Util.Arquivo;
 
@@ -18,8 +20,8 @@ import trabalhops.Util.Arquivo;
 public class Catalogo {
 
     Map<String, Produto> catalogo = new Hashtable<String, Produto>();
-      Arquivo arq = new Arquivo();
-    
+    Arquivo arq = new Arquivo();
+
     public Catalogo() {
     }
 
@@ -62,14 +64,20 @@ public class Catalogo {
 
     public String return_produto(String key) throws ClassNotFoundException, IOException {
         Produto produto;
-        
+
         produto = catalogo.get(key); //Aqui talvez um toString
-       
+
         return produto.toString();
     }
 
-    public void buscarCodigoProduto(int codigo) {
-
+    public void buscarCodigoProduto(int codigo) throws ClassNotFoundException, IOException {
+        String string = "";
+        catalogo = arq.readArquivoCatalogo();
+        ArrayList<String> listString = new ArrayList();
+        for (Map.Entry<String, Produto> produto : catalogo.entrySet()) {
+            string = produto.getValue().getNome();
+            listString.add(string);
+        }
     }
 
     @Override
@@ -81,11 +89,19 @@ public class Catalogo {
         return string;
     }
 
-    public String listaNomes() throws ClassNotFoundException, IOException {
+    public List<String> listaNomes() throws ClassNotFoundException, IOException {
         String string = "";
-//        for (Map.Entry<String, Produto> produto : catalogo.entrySet()) {
-//            string += produto.getValue().getNome() + "\n";
-//        }
+        catalogo = arq.readArquivoCatalogo();
+        ArrayList<String> listString = new ArrayList();
+        for (Map.Entry<String, Produto> produto : catalogo.entrySet()) {
+            string = produto.getValue().getNome();
+            listString.add(string);
+        }
+        return listString;
+    }
+
+    public String listarProdutos() throws ClassNotFoundException, IOException {
+        String string = "";
         Map<String, Produto> produto = arq.readArquivoCatalogo();
         string = produto.toString();
         return string;

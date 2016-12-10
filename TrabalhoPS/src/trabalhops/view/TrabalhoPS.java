@@ -22,17 +22,9 @@ import trabalhops.model.Produto;
  * @author mayaracoelho
  */
 public class TrabalhoPS  {
-
-    private static final String nomeArquivo = "Arquivo.txt";
     
     public static void main(String[] args) throws ClassNotFoundException, IOException {
-        
-        Arquivo arq = new Arquivo();
- 
-         arq.writeArquivo("TESTE");
-//         Catalogo dados = arq.readArquivo();
-//        String dados = arq.readArquivo();
-//         System.out.println1("**** " + dados);
+       
         
         Loja loja = new Loja();
         

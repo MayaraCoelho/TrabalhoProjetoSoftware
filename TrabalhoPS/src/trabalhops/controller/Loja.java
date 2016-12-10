@@ -17,7 +17,6 @@ import trabalhops.model.Produto;
 public class Loja {
 
     Catalogo catalogo = new Catalogo();
-    
 
     public Loja() {
 
@@ -31,7 +30,7 @@ public class Loja {
         }
 
     }
-    
+
     public void buscaProduto(String codigo) throws ClassNotFoundException, IOException {
         if (!catalogo.checkkey(codigo)) {
             System.out.println("Produto não encontrado.");
@@ -39,9 +38,8 @@ public class Loja {
         System.out.println(catalogo.return_produto(codigo));
     }
 
-    public void pegaCatalogo() {
-//        System.out.println(catalogo.toString());
-//        Catalogo catalogo = readArquivoCatalogo();
+    public void pegaCatalogo() throws ClassNotFoundException, IOException {
+        System.out.println(catalogo.listarProdutos());
 
     }
 
