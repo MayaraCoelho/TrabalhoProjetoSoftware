@@ -5,13 +5,14 @@
  */
 package trabalhops.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author mayaracoelho
  */
-public class Produto {
+public class Produto implements Serializable {
     private int codigo;
     private String nome;
     private String descricao;

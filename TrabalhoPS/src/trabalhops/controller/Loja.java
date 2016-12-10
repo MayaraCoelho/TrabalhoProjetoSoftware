@@ -7,7 +7,6 @@ package trabalhops.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import trabalhops.Util.Arquivo;
 import trabalhops.model.Catalogo;
 import trabalhops.model.Produto;
 
@@ -18,7 +17,7 @@ import trabalhops.model.Produto;
 public class Loja {
 
     Catalogo catalogo = new Catalogo();
-    Arquivo arquivo = new Arquivo();
+    
 
     public Loja() {
 
@@ -26,14 +25,14 @@ public class Loja {
 
     public void add(String key, int cod, String nome, String descr, LocalDate dtIn, LocalDate dtFin) throws IOException {
         if (key != null && !key.isEmpty()) {
+            //transformar a data em string
             Produto produto = new Produto(cod, nome, descr, dtIn, dtFin);
             catalogo.add(key, produto);
-
         }
 
     }
-
-    public void buscaProduto(String codigo) {
+    
+    public void buscaProduto(String codigo) throws ClassNotFoundException, IOException {
         if (!catalogo.checkkey(codigo)) {
             System.out.println("Produto não encontrado.");
         }
@@ -41,10 +40,12 @@ public class Loja {
     }
 
     public void pegaCatalogo() {
-        System.out.println(catalogo.toString());
+//        System.out.println(catalogo.toString());
+//        Catalogo catalogo = readArquivoCatalogo();
+
     }
 
-    public void pegaNomes() {
+    public void pegaNomes() throws ClassNotFoundException, IOException {
         System.out.println(catalogo.listaNomes());
     }
 

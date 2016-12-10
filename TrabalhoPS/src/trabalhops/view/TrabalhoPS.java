@@ -14,6 +14,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import trabalhops.Util.Arquivo;
 import trabalhops.controller.Loja;
+import trabalhops.model.Catalogo;
 import trabalhops.model.Produto;
 
 /**
@@ -29,63 +30,64 @@ public class TrabalhoPS  {
         Arquivo arq = new Arquivo();
  
          arq.writeArquivo("TESTE");
-         String dados = arq.readArquivo();
-         System.out.println("**** " + dados);
+//         Catalogo dados = arq.readArquivo();
+//        String dados = arq.readArquivo();
+//         System.out.println1("**** " + dados);
         
-//        Loja loja = new Loja();
-//        
-//        Integer option = 0;
-//        while(option!=5){
-//            printMenu();
-//            
-//            Scanner scanner = new Scanner(System.in).useDelimiter("\\n");
-//            
-//            try {
-//                    option = scanner.nextInt();
-//            } catch (InputMismatchException e) {
-//                    System.err.println("Opção inválida!");
-//            }
-//            
-//            String sentence;
-//
-//				switch (option) {
-//					case 1:
-//						System.out.print("Favor digitar dados do produto. \n");
-//                                                System.out.print("Código: \n");
-//                                                String codigo = scanner.next();
-//                                                Integer cod = Integer.parseInt(codigo);
-//                                                System.out.print("Nome: \n");
-//                                                String nome = scanner.next();
-//                                                System.out.print("Descrição: \n");
-//                                                String descr = scanner.next();
-//                                                System.out.print("Data de inicio (yyyy-MM-dd: \n");
-//                                                final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
-//                                                final LocalDate dtIn = LocalDate.parse(scanner.next());
-//                                                System.out.print("Data Final (yyyy-MM-dd: \n");
-//                                                final LocalDate dtFin = LocalDate.parse(scanner.next());                                                
-//                                                loja.add(codigo, cod, nome, descr, dtIn, dtFin);
-//						break;
-//					case 2:
-//						System.out.print("Insira o código do produto que deseja visualizar: \n");
-//                                                codigo = scanner.next();
-//                                                loja.buscaProduto(codigo);
-//                                                //imprimir produto X
-//						break;
-//                                        case 3:
-//                                                loja.pegaCatalogo();
-//                                                //basta usar toString do catalogo
-//						break;
-//					case 4:
-//                                                loja.pegaNomes();
-//						//listar nomes dos produtos, basta criar um metodo com um loop no catálogo
-//						break;
-//					case 5:
-//						break;
-//					default:
-//						System.err.println("Opção inválida!");
-//				}
-//            
-//        }
+        Loja loja = new Loja();
+        
+        Integer option = 0;
+        while(option!=5){
+            printMenu();
+            
+            Scanner scanner = new Scanner(System.in).useDelimiter("\\n");
+            
+            try {
+                    option = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                    System.err.println("Opção inválida!");
+            }
+            
+            String sentence;
+
+				switch (option) {
+					case 1:
+						System.out.print("Favor digitar dados do produto. \n");
+                                                System.out.print("Código: \n");
+                                                String codigo = scanner.next();
+                                                Integer cod = Integer.parseInt(codigo);
+                                                System.out.print("Nome: \n");
+                                                String nome = scanner.next();
+                                                System.out.print("Descrição: \n");
+                                                String descr = scanner.next();
+                                                System.out.print("Data de inicio (yyyy-MM-dd: \n");
+                                                final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+                                                final LocalDate dtIn = LocalDate.parse(scanner.next());
+                                                System.out.print("Data Final (yyyy-MM-dd: \n");
+                                                final LocalDate dtFin = LocalDate.parse(scanner.next());                                                
+                                                loja.add(codigo, cod, nome, descr, dtIn, dtFin);
+						break;
+					case 2:
+						System.out.print("Insira o código do produto que deseja visualizar: \n");
+                                                codigo = scanner.next();
+                                                loja.buscaProduto(codigo);
+                                                //imprimir produto X
+						break;
+                                        case 3:
+                                                loja.pegaCatalogo();
+                                                //basta usar toString do catalogo
+						break;
+					case 4:
+                                                loja.pegaNomes();
+						//listar nomes dos produtos, basta criar um metodo com um loop no catálogo
+						break;
+					case 5:
+						break;
+					default:
+						System.err.println("Opção inválida!");
+				}
+            
+        }
     }
     
     private static void printMenu() {

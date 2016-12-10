@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Hashtable;
 import java.util.Map;
+import trabalhops.Util.Arquivo;
 
 /**
  *
@@ -17,7 +18,8 @@ import java.util.Map;
 public class Catalogo {
 
     Map<String, Produto> catalogo = new Hashtable<String, Produto>();
-
+      Arquivo arq = new Arquivo();
+    
     public Catalogo() {
     }
 
@@ -34,8 +36,9 @@ public class Catalogo {
         }
     }
 
-    public void add(String key, Produto produto) {
+    public void add(String key, Produto produto) throws IOException {
         catalogo.put(key, produto);
+        arq.writeArquivoCatalogo(catalogo);
 
     }
 
@@ -57,11 +60,11 @@ public class Catalogo {
         return false;
     }
 
-    public String return_produto(String key) {
+    public String return_produto(String key) throws ClassNotFoundException, IOException {
         Produto produto;
-
+        
         produto = catalogo.get(key); //Aqui talvez um toString
-
+       
         return produto.toString();
     }
 
@@ -78,11 +81,13 @@ public class Catalogo {
         return string;
     }
 
-    public String listaNomes() {
+    public String listaNomes() throws ClassNotFoundException, IOException {
         String string = "";
-        for (Map.Entry<String, Produto> produto : catalogo.entrySet()) {
-            string += produto.getValue().getNome() + "\n";
-        }
+//        for (Map.Entry<String, Produto> produto : catalogo.entrySet()) {
+//            string += produto.getValue().getNome() + "\n";
+//        }
+        Map<String, Produto> produto = arq.readArquivoCatalogo();
+        string = produto.toString();
         return string;
     }
 
