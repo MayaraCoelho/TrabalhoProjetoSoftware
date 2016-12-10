@@ -62,22 +62,16 @@ public class Catalogo {
         return false;
     }
 
-    public String return_produto(String key) throws ClassNotFoundException, IOException {
-        Produto produto;
-
-        produto = catalogo.get(key); //Aqui talvez um toString
-
-        return produto.toString();
-    }
-
-    public void buscarCodigoProduto(int codigo) throws ClassNotFoundException, IOException {
-        String string = "";
+    public String buscarCodigoProduto(int codigo) throws ClassNotFoundException, IOException {
+        String string = "Produto não encontrado";
         catalogo = arq.readArquivoCatalogo();
-        ArrayList<String> listString = new ArrayList();
         for (Map.Entry<String, Produto> produto : catalogo.entrySet()) {
-            string = produto.getValue().getNome();
-            listString.add(string);
+            if (codigo == produto.getValue().getCodigo()){
+                string = produto.toString();
+                return string;
+            }   
         }
+        return string;
     }
 
     @Override

@@ -16,7 +16,6 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.Map;
-import trabalhops.model.Catalogo;
 import trabalhops.model.Produto;
 
 /**
@@ -34,12 +33,11 @@ public class Arquivo implements Serializable {
     public void writeArquivoCatalogo(Map<String, Produto> catalogo) throws FileNotFoundException, IOException {
         // The name of the file to create.
         String nomeArquivo = "Arquivo.dat";
-
         File file = new File(nomeArquivo);
         if (!file.exists()) {
             file.createNewFile();
+            System.out.println("    NAI ");
         }
-        
         OutputStream writeArquivo = new FileOutputStream(file);
         ObjectOutputStream os = new ObjectOutputStream(writeArquivo);
         os.writeObject(catalogo);
