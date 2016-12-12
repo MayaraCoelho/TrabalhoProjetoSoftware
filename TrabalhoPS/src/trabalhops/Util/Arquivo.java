@@ -24,19 +24,16 @@ import trabalhops.model.Produto;
  */
 public class Arquivo implements Serializable {
 
-    private static String filePath = "teste";
-
     public Arquivo() {
 
     }
-    
+
     public void writeArquivoCatalogo(Map<String, Produto> catalogo) throws FileNotFoundException, IOException {
         // The name of the file to create.
         String nomeArquivo = "Arquivo.dat";
         File file = new File(nomeArquivo);
         if (!file.exists()) {
             file.createNewFile();
-            System.out.println("    NAI ");
         }
         OutputStream writeArquivo = new FileOutputStream(file);
         ObjectOutputStream os = new ObjectOutputStream(writeArquivo);

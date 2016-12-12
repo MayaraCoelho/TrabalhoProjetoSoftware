@@ -7,6 +7,7 @@ package trabalhops.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import trabalhops.Util.DateException;
 import trabalhops.model.Catalogo;
 import trabalhops.model.Produto;
 
@@ -22,7 +23,7 @@ public class Loja {
 
     }
 
-    public void add(String key, int cod, String nome, String descr, LocalDate dtIn, LocalDate dtFin) throws IOException {
+    public void add(String key, int cod, String nome, String descr, LocalDate dtIn, LocalDate dtFin) throws IOException, DateException {
         if (key != null && !key.isEmpty()) {
             Produto produto = new Produto(cod, nome, descr, dtIn, dtFin);
             catalogo.add(key, produto);

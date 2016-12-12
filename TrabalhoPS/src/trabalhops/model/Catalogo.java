@@ -12,6 +12,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import trabalhops.Util.Arquivo;
+import trabalhops.Util.DateException;
 
 /**
  *
@@ -25,7 +26,7 @@ public class Catalogo {
     public Catalogo() {
     }
 
-    public Catalogo(String catalogo) {
+    public Catalogo(String catalogo) throws DateException {
         String[] result = catalogo.split("[\n]");
         for (String r : result) {
             String[] res = r.split(" ");
@@ -101,5 +102,5 @@ public class Catalogo {
         return string;
     }
 
-}
+} 
  
