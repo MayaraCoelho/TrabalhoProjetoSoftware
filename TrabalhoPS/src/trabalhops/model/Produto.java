@@ -26,17 +26,33 @@ public class Produto implements Serializable {
         this.nome = nome;
         this.descricao = descricao;
 
-        if ((dataInicial.getYear() >= 1990) && (dataInicial.getYear() < 2017)) {
+        if ((dataInicial.getYear() >= 1990) && (dataInicial.getYear() <= 2016)) {
             this.dataInicial = dataInicial;
         } else {
             throw new DateException("Data incorreta.");
         }
-        if ((dataInicial.getDayOfMonth()> 32) && (dataInicial.getDayOfMonth()<1)){
+        if ((dataInicial.getDayOfMonth() >= 1) && (dataInicial.getDayOfMonth() <= 31)) {
             this.dataInicial = dataInicial;
         } else {
             throw new DateException("Data incorreta.");
         }
+        if ((dataInicial.getMonthValue() >= 1) && (dataInicial.getMonthValue() <= 12)) {
+            this.dataInicial = dataInicial;
+        } else {
+            throw new DateException("Data incorreta.");
+        }
+
         if ((dataFinal.getYear() >= 1990) && (dataFinal.getYear() < 2017)) {
+            this.dataFinal = dataFinal;
+        } else {
+            throw new DateException("Data incorreta.");
+        }
+        if ((dataFinal.getDayOfMonth() >= 1) && (dataFinal.getDayOfMonth() <= 31)) {
+            this.dataFinal = dataFinal;
+        } else {
+            throw new DateException("Data incorreta.");
+        }
+        if ((dataFinal.getMonthValue() >= 1) && (dataFinal.getMonthValue() <= 12)) {
             this.dataFinal = dataFinal;
         } else {
             throw new DateException("Data incorreta.");
@@ -78,6 +94,16 @@ public class Produto implements Serializable {
         } else {
             throw new DateException("Data incorreta.");
         }
+        if ((dataInicial.getDayOfMonth() >= 1) && (dataInicial.getDayOfMonth() <= 31)) {
+            this.dataInicial = dataInicial;
+        } else {
+            throw new DateException("Data incorreta.");
+        }
+        if ((dataInicial.getMonthValue() >= 1) && (dataInicial.getMonthValue() <= 12)) {
+            this.dataInicial = dataInicial;
+        } else {
+            throw new DateException("Data incorreta.");
+        }
     }
 
     public LocalDate getDataFinal() {
@@ -90,14 +116,24 @@ public class Produto implements Serializable {
         } else {
             throw new DateException("Data incorreta.");
         }
+        if ((dataFinal.getDayOfMonth() >= 1) && (dataFinal.getDayOfMonth() <= 31)) {
+            this.dataFinal = dataFinal;
+        } else {
+            throw new DateException("Data incorreta.");
+        }
+        if ((dataFinal.getMonthValue() >= 1) && (dataFinal.getMonthValue() <= 12)) {
+            this.dataFinal = dataFinal;
+        } else {
+            throw new DateException("Data incorreta.");
+        }
     }
 
     @Override
     public String toString() {
         String string;
-        string = ("\nCódigo: " + codigo + "\nNome: "  + nome + 
-                "\nDescricao " + descricao + "\nData Inicial " + dataInicial + 
-                "\nData Final " +dataFinal);
+        string = ("\nCódigo: " + codigo + "\nNome: " + nome
+                + "\nDescricao " + descricao + "\nData Inicial " + dataInicial
+                + "\nData Final " + dataFinal);
         return string;
     }
 
