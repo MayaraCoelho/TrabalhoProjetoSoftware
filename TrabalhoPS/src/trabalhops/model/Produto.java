@@ -31,6 +31,11 @@ public class Produto implements Serializable {
         } else {
             throw new DateException("Data incorreta.");
         }
+        if ((dataInicial.getDayOfMonth()> 32) && (dataInicial.getDayOfMonth()<1)){
+            this.dataInicial = dataInicial;
+        } else {
+            throw new DateException("Data incorreta.");
+        }
         if ((dataFinal.getYear() >= 1990) && (dataFinal.getYear() < 2017)) {
             this.dataFinal = dataFinal;
         } else {
